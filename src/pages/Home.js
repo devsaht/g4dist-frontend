@@ -25,6 +25,11 @@ export default function Home() {
   return (
     <div className="container">
       <div className="py-4">
+        <div>
+          <Link className="btn " to="/articulos">
+            Articulos
+          </Link>
+        </div>
         { users.length ===0 ? <Loader/> : (
           <table className="table table-dark  table-hover border shadow">
           <thead>
