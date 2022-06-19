@@ -10,6 +10,7 @@ import Articulos from "./pages/Articulos";
 import AddArticle from "./articles/AddArticle";
 import EditArticle from "./articles/EditArticle";
 import ViewArticle from "./articles/ViewArticle";
+import Transaccion from "./pages/Transaccion";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
         <Navbar />
 
         <Routes>
+          
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/transaccion" element={<Transaccion />} />
           <Route exact path="/articulos" element={<Articulos />} />
           <Route exact path="/articulos/addarticle" element={<AddArticle />} />
           <Route exact path="/articulos/editarticle/:id" element={<EditArticle />} />

@@ -38,16 +38,28 @@ const Articulos = () => {
         padding:"6px 12px",
         fontSize:"16px",
         borderRadius:"4px",
-        backgroundColor:"rgb(81,132,164)",
-        marginLeft:"32px"
+        backgroundColor:"rgb(13, 110, 253)",
+        marginLeft:"32px",
+        color:"white"
       }
 
+      const estadosArticulo = {
+          1: "Bueno",
+          2: "Regular",
+          3: "Malo",
+      }
     return ( 
     <div className='container'>
         <div  className="py-4">
             <header>
                 <div style={divStyles}>
-                    CRUD - ARTICULOS G4
+                    ARTICULOS
+                    <Link className="btn" style={btnStyles} to="/">
+                        Usuarios
+                    </Link>
+                    <Link className="btn" style={btnStyles} to="/transaccion">
+                        Donaciones
+                    </Link>
                     <Link className="btn" style={btnStyles} to="/articulos/addarticle">
                         Agregar Artículo
                     </Link>
@@ -77,7 +89,7 @@ const Articulos = () => {
                                 <img src={article.imagen} alt="Imagen de donacion" width="80" />
                             </td>
                             <td>{article.cantidad}</td>
-                            <td>{article.estado}</td>
+                            <td>{estadosArticulo[article.estado]}</td>
                             <td>
                                 <button
                                     className="btn btn-danger mx-2"

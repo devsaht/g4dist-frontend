@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const AddArticle = () => {
+const AddArticle = ({setIdArticle = 0}) => {
     let navigate = useNavigate();
 
     const [article, setArticle] = useState({
@@ -20,8 +20,10 @@ const AddArticle = () => {
     
       const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:8090/articulos/guardar", article);
-        navigate("/articulos");
+        console.log(article)
+        await axios.post("http://localhost:8090/articulos/guardar", article)
+         .then(res=>setIdArticle(res.data.id));
+        // navigate("/articulos");
       };
     
     
@@ -37,82 +39,84 @@ const AddArticle = () => {
       }
     
       return (
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-              <h2 className="text-center m-4">Registrar Articulo</h2>
+            // <div className="col-md-4 offset-md-3 border rounded p-4 mt-2 shadow">
+            <>
+            <h2 className="text-center m-6">Registrar Articulo</h2>
     
-              <form onSubmit={(e) => onSubmit(e)}>
-                <div style={divStyles}>
-                  <label htmlFor="Tipo" style={labelStyles} className="form-label">
-                    Tipo
-                  </label>
-                  <input
-                    styles="display: inline"
-                    type={"text"}
-                    className="form-control"
-                    placeholder="Ingrese tipo de artículo"
-                    name="tipo"
-                    value={tipo}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
+    <form onSubmit={(e) => onSubmit(e)}>
+      <div style={divStyles}>
+        <label htmlFor="Tipo" style={labelStyles} className="form-label">
+          Tipo
+        </label>
+        <input
+          styles="display: inline"
+          type={"text"}
+          className="form-control"
+          placeholder="Ingrese tipo de artículo"
+          name="tipo"
+          value={tipo}
+          onChange={(e) => onInputChange(e)}
+        />
+      </div>
 
-                <div style={divStyles}>
-                  <label htmlFor="Imagen" style={labelStyles} className="form-label">
-                    Imagen
-                  </label>
-                  <input
-                    styles="display: inline"
-                    type={"text"}
-                    className="form-control"
-                    placeholder="Ingrese link de la imagen"
-                    name="imagen"
-                    value={imagen}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
-                
-                <div style={divStyles}>
-                  <label htmlFor="Cantidad" style={labelStyles} className="form-label">
-                    Cantidad
-                  </label>
-                  <input
-                    styles="display: inline"
-                    type={"cantidad"}
-                    className="form-control"
-                    placeholder="Ingrese cantidad"
-                    name="cantidad"
-                    value={cantidad}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
+      <div style={divStyles}>
+        <label htmlFor="Imagen" style={labelStyles} className="form-label">
+          Imagen
+        </label>
+        <input
+          styles="display: inline"
+          type={"text"}
+          className="form-control"
+          placeholder="Ingrese link de la imagen"
+          name="imagen"
+          value={imagen}
+          onChange={(e) => onInputChange(e)}
+        />
+      </div>
+      
+      <div style={divStyles}>
+        <label htmlFor="Cantidad" style={labelStyles} className="form-label">
+          Cantidad
+        </label>
+        <input
+          styles="display: inline"
+          type={"cantidad"}
+          className="form-control"
+          placeholder="Ingrese cantidad"
+          name="cantidad"
+          value={cantidad}
+          onChange={(e) => onInputChange(e)}
+        />
+      </div>
 
-                <div style={divStyles}>
-                  <label htmlFor="Estado" style={labelStyles} className="form-label">
-                    Estado
-                  </label>
-                  <input
-                    styles="display: inline"
-                    type={"text"}
-                    className="form-control"
-                    placeholder="Ingrese estado del artículo"
-                    name="estado"
-                    value={estado}
-                    onChange={(e) => onInputChange(e)}
-                  />
-                </div>
+      <div style={divStyles}>
+        <label htmlFor="Estado" style={labelStyles} className="form-label">
+          Estado
+        </label>
+        <select 
+          styles="display: inline"
+          type={"text"}
+          className="form-control"
+          placeholder="Seleccione estado del artículo"
 
-                <button type="submit" className="btn btn-outline-primary">
-                  Guardar
-                </button>
-                <Link className="btn btn-outline-danger mx-2" to="/">
-                  Cancelar
-                </Link>
-              </form>
-            </div>
-          </div>
-        </div>
+          name="estado"
+          value={estado}
+          onChange={(e) => onInputChange(e)}
+        >
+          <option value="1">Bueno</option>
+          <option value="2" selected>Malo</option>
+          <option value="3">Regular</option>
+        </select>
+      </div>
+
+      <button type="submit" className="btn btn-outline-primary">
+        ENVIAR ENVIO
+      </button>
+      <Link className="btn btn-outline-danger mx-2" to="/">
+        Cancelar
+      </Link>
+    </form>
+            </>
       );
 }
  

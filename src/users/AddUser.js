@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function AddUser() {
+export default function AddUser({idSavedUser,setIdSavedUser}) {
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -22,8 +22,13 @@ export default function AddUser() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/usuarios/guardar", user);
-    navigate("/");
+    await axios.post("http://localhost:8090/usuarios/guardar", user)
+      .then(res=>{
+        //extraer id del usuario insertado
+        console.log(res.data)
+        setIdSavedUser(res.data.id)
+      })
+    // navigate("/");
   };
 
 
@@ -39,9 +44,7 @@ export default function AddUser() {
   }
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+        <>
           <h2 className="text-center m-4">Registrar Usuario</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
@@ -137,8 +140,6 @@ export default function AddUser() {
               Cancelar
             </Link>
           </form>
-        </div>
-      </div>
-    </div>
+        </>
   );
 }

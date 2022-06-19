@@ -13,21 +13,44 @@ export default function Home() {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:8080/usuarios/listar");
+    const result = await axios.get("http://localhost:8090/usuarios/listar");
     setUsers(result.data);
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8080/usuarios/eliminar/${id}`);
+    await axios.delete(`http://localhost:8090/usuarios/eliminar/${id}`);
     loadUsers();
   };
+
+  const divTitleStyles = {
+    display:"flex",
+    flexDirection:"row",
+    padding:"12px",
+    fontSize:"32px",
+    borderRadius:"4px",
+    border:"2px solid rgb(13, 110, 253)",
+    marginBottom:"16px"
+  }
+
+  const btnStyles = {
+    padding:"6px 12px",
+    fontSize:"16px",
+    borderRadius:"4px",
+    backgroundColor:"rgb(13, 110, 253)",
+    marginLeft:"32px",
+    color:"white"
+  }
 
   return (
     <div className="container">
       <div className="py-4">
-        <div>
-          <Link className="btn " to="/articulos">
+        <div style={divTitleStyles}>
+          USUARIOS
+          <Link className="btn" style={btnStyles} to="/articulos">
             Articulos
+          </Link>
+          <Link className="btn" style={btnStyles} to="/transaccion">
+            Donaciones
           </Link>
         </div>
         { users.length ===0 ? <Loader/> : (
