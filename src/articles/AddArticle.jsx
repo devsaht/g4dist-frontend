@@ -22,8 +22,9 @@ const AddArticle = ({setIdArticle = 0}) => {
         e.preventDefault();
         console.log(article)
         await axios.post("http://localhost:8090/articulos/guardar", article)
-         .then(res=>setIdArticle(res.data.id));
-        // navigate("/articulos");
+         .then(res=>setArticle(res.data.id));
+        navigate("/articulos");
+        alert('Envio registrado');
       };
     
     
@@ -38,6 +39,10 @@ const AddArticle = ({setIdArticle = 0}) => {
         textAlign:"left"
       }
     
+      const onClickEnvio = () =>{
+        //
+
+      }
       return (
             // <div className="col-md-4 offset-md-3 border rounded p-4 mt-2 shadow">
             <>
@@ -109,7 +114,7 @@ const AddArticle = ({setIdArticle = 0}) => {
         </select>
       </div>
 
-      <button type="submit" className="btn btn-outline-primary">
+      <button type="submit" className=" btn-outline-primary" onClick={onClickEnvio}>
         ENVIAR ENVIO
       </button>
       <Link className="btn btn-outline-danger mx-2" to="/">

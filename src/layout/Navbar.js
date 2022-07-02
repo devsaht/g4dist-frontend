@@ -26,9 +26,17 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* <Link className="btn btn-outline-light" to="/adduser">
-            Agregar Usuario
-          </Link> */}
+          <div>
+            <span class='me-4'>
+              ¿Deseas Donar?
+            </span>
+            <Link className="btn btn-outline-light me-4" to="/login">
+              Iniciar Sesión
+            </Link>
+            <Link className="btn btn-outline-light" to="/adduser">
+              Registrarse
+            </Link>
+          </div>
         </div>
       </nav>
     </div>

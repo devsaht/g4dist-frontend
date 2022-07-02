@@ -11,6 +11,9 @@ import AddArticle from "./articles/AddArticle";
 import EditArticle from "./articles/EditArticle";
 import ViewArticle from "./articles/ViewArticle";
 import Transaccion from "./pages/Transaccion";
+import Login from "./pages/Login";
+
+import { useEffect, useState } from "react";
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
         <Routes>
           
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/transaccion" element={<Transaccion />} />
           <Route exact path="/articulos" element={<Articulos />} />
           <Route exact path="/articulos/addarticle" element={<AddArticle />} />
