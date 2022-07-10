@@ -7,12 +7,17 @@ export default function Navbar() {
     fontSize:"32px",
     fontWeight:"600"
   }
+
+  const navStyles = {
+    backgroundColor:"black",
+  }
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg" style={navStyles}>
         <div className="container-fluid">
           <Link style={titleStyles} className="navbar-brand" to="/">
-            DONACIONES - FISI
+            <img src="images/sanmarcos.png" alt="" width="72" height="96"/>
+            <span className="ms-4">FISITraperos</span>
           </Link>
           <button
             className="navbar-toggler"
@@ -27,14 +32,17 @@ export default function Navbar() {
           </button>
 
           <div>
-            <span class='me-4'>
-              ¿Deseas Donar?
-            </span>
-            <Link className="btn btn-outline-light me-4" to="/login">
-              Iniciar Sesión
+            <Link className="btn btn-outline-light m-2" to="/login">
+              Inicio
             </Link>
-            <Link className="btn btn-outline-light" to="/adduser">
-              Registrarse
+            <Link className="btn btn-outline-light m-2" to="/adduser">
+              Sobre Nosotros
+            </Link>
+            <Link className="btn btn-outline-light m-2" to="/adduser">
+              Contacto
+            </Link>
+            <Link className="btn btn-outline-light m-4 btn-danger" to="/login">
+              Iniciar Sesion
             </Link>
           </div>
         </div>

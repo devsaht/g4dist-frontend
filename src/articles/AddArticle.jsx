@@ -40,16 +40,16 @@ const AddArticle = ({setIdArticle = 0}) => {
       }
     
       const onClickEnvio = () =>{
-        //
+        // 
 
       }
       return (
             // <div className="col-md-4 offset-md-3 border rounded p-4 mt-2 shadow">
-            <>
+            <div className="col-md-4 offset-md-3 border rounded p-4 mt-2 shadow">
             <h2 className="text-center m-6">Registrar Articulo</h2>
     
     <form onSubmit={(e) => onSubmit(e)}>
-      <div style={divStyles}>
+      {/* <div style={divStyles}>
         <label htmlFor="Tipo" style={labelStyles} className="form-label">
           Tipo
         </label>
@@ -62,6 +62,25 @@ const AddArticle = ({setIdArticle = 0}) => {
           value={tipo}
           onChange={(e) => onInputChange(e)}
         />
+      </div> */}
+
+      <div style={divStyles}>
+        <label htmlFor="Estado" style={labelStyles} className="form-label">
+          Tipo
+        </label>
+        <select 
+          styles="display: inline"
+          type={"text"}
+          className="form-control"
+          placeholder="Seleccione estado del artículo"
+
+          name="estado"
+          value={estado}
+          onChange={(e) => onInputChange(e)}
+        >
+          <option value="1">Ropa</option>
+          <option value="3">Juguete</option>
+        </select>
       </div>
 
       <div style={divStyles}>
@@ -114,14 +133,14 @@ const AddArticle = ({setIdArticle = 0}) => {
         </select>
       </div>
 
-      <button type="submit" className=" btn-outline-primary" onClick={onClickEnvio}>
-        ENVIAR ENVIO
-      </button>
+      <Link className="btn btn-danger mt-4" to="/articulos/addarticle">
+        Enviar Donacion
+      </Link>
       <Link className="btn btn-outline-danger mx-2" to="/">
         Cancelar
       </Link>
     </form>
-            </>
+            </div>
       );
 }
  

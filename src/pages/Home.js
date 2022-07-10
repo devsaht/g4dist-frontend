@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Loader from "../componentes/Loader";
+import Inicio from "../componentes/Inicio";
+import SobreNosotros from "../componentes/SobreNosotros";
+import Footer from "../componentes/Footer";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -44,7 +47,7 @@ export default function Home() {
   return (
     <div className="container">
       <div className="py-4">
-        <div style={divTitleStyles}>
+        {/* <div style={divTitleStyles}>
           USUARIOS
           <Link className="btn" style={btnStyles} to="/articulos">
             Articulos
@@ -52,7 +55,10 @@ export default function Home() {
           <Link className="btn" style={btnStyles} to="/transaccion">
             Donaciones
           </Link>
-        </div>
+        </div> */}
+        <Inicio/>
+        <SobreNosotros/>
+        <Footer/>
         { users.length ===0 ? <Loader/> : (
           <table className="table table-dark  table-hover border shadow">
           <thead>
