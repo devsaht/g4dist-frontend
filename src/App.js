@@ -13,7 +13,6 @@ import ViewArticle from "./articles/ViewArticle";
 import Transaccion from "./pages/Transaccion";
 import Login from "./pages/Login";
 
-import { useEffect, useState } from "react";
 
 function App() {
   return (
