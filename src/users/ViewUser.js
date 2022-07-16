@@ -13,7 +13,7 @@ export default function ViewUser() {
 
   useEffect(() => {
     loadUser();
-  }, []);
+  }, [user]);
 
   const loadUser = async () => {
     const result = await axios.get(`http://localhost:8090/user/${id}`);

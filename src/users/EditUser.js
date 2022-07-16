@@ -34,7 +34,7 @@ export default function EditUser({idSavedUser = 0}) {
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:8090/usuarios/buscar/${ idSavedUser==0 ? id: idSavedUser}`)
+    const result = await axios.get(`http://localhost:8090/usuarios/buscar/${ idSavedUser===0 ? id: idSavedUser}`)
     setUser(result.data)
     setLoading(false)
     
@@ -42,7 +42,7 @@ export default function EditUser({idSavedUser = 0}) {
   };
 
   return (
-        <div className={idSavedUser==0 ?`row col-md-6 border rounded p-4 mt-2 shadow` : ``}>
+        <div className={idSavedUser===0 ?`row col-md-6 border rounded p-4 mt-2 shadow` : ``}>
           
           <h2 className="text-center m-4">Datos de usuario</h2>
           {loading ? <Loader/> : (
