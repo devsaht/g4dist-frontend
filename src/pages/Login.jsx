@@ -19,7 +19,6 @@ const Login = () => {
 
     return ( 
         <div className="container">
-            col-md-6 border rounded p-4 mt-2 shadow
             <div className="row m-4 d-flex justify-content-center" style={containerStyles}>
                 <>
                     <p style={titleStyles}>ACCEDER</p>

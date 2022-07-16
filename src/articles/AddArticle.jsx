@@ -20,6 +20,7 @@ const AddArticle = ({setIdArticle = 0}) => {
     
       const onSubmit = async (e) => {
         e.preventDefault();
+        alert("Envio procesandose")
         console.log(article)
         await axios.post("http://localhost:8090/articulos/guardar", article)
          .then(res=>setArticle(res.data.id));
@@ -49,20 +50,6 @@ const AddArticle = ({setIdArticle = 0}) => {
             <h2 className="text-center m-6">Registrar Articulo</h2>
     
     <form onSubmit={(e) => onSubmit(e)}>
-      {/* <div style={divStyles}>
-        <label htmlFor="Tipo" style={labelStyles} className="form-label">
-          Tipo
-        </label>
-        <input
-          styles="display: inline"
-          type={"text"}
-          className="form-control"
-          placeholder="Ingrese tipo de artículo"
-          name="tipo"
-          value={tipo}
-          onChange={(e) => onInputChange(e)}
-        />
-      </div> */}
 
       <div style={divStyles}>
         <label htmlFor="Estado" style={labelStyles} className="form-label">
@@ -72,10 +59,10 @@ const AddArticle = ({setIdArticle = 0}) => {
           styles="display: inline"
           type={"text"}
           className="form-control"
-          placeholder="Seleccione estado del artículo"
-
-          name="estado"
-          value={estado}
+          placeholder="Seleccione tipo de artículo"
+          required
+          name="tipo"
+          value={tipo}
           onChange={(e) => onInputChange(e)}
         >
           <option value="1">Ropa</option>
@@ -95,6 +82,7 @@ const AddArticle = ({setIdArticle = 0}) => {
           name="imagen"
           value={imagen}
           onChange={(e) => onInputChange(e)}
+          required
         />
       </div>
       
@@ -110,6 +98,7 @@ const AddArticle = ({setIdArticle = 0}) => {
           name="cantidad"
           value={cantidad}
           onChange={(e) => onInputChange(e)}
+          required
         />
       </div>
 
@@ -122,7 +111,7 @@ const AddArticle = ({setIdArticle = 0}) => {
           type={"text"}
           className="form-control"
           placeholder="Seleccione estado del artículo"
-
+          required
           name="estado"
           value={estado}
           onChange={(e) => onInputChange(e)}
@@ -133,9 +122,12 @@ const AddArticle = ({setIdArticle = 0}) => {
         </select>
       </div>
 
-      <Link className="btn btn-danger mt-4" to="/articulos/addarticle">
+      {/* <Link className="btn btn-danger mt-4" to="/articulos/addarticle">
         Enviar Donacion
-      </Link>
+      </Link> */}
+      <button type="submit" className="btn btn-danger mt-4">
+        Enviar Donacion
+      </button>
       <Link className="btn btn-outline-danger mx-2" to="/">
         Cancelar
       </Link>
